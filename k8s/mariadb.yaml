@@ -16,14 +16,14 @@ spec:
       containers:
         - name: mariadb
           # 여러분의 mariadb image 주소를 입력해주세요.
-          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_6eb7948745eb
+          image: krmp-d2hub-idock.9rum.cc/dev-test/repo_0a4f028a4c9c
           env:
             - name: TZ
               value: Asia/Seoul
             - name: MARIADB_ROOT_PASSWORD
               value: root
             - name: MARIADB_DATABASE
-              value: devdoc
+              value: devdoc_db
             - name: MARIADB_DISABLE_UPGRADE_BACKUP
               value: '1'
           volumeMounts:
