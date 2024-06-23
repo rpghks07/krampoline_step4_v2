@@ -10,7 +10,9 @@
 -- USE testdb;
 
 -- 데이터베이스 생성 및 설정
-CREATE SCHEMA IF NOT EXISTS `testdb`;
+CREATE SCHEMA IF NOT EXISTS `devdoc_db`;
+
+USE `devdoc_db`;
 
 -- User 테이블 생성
 
