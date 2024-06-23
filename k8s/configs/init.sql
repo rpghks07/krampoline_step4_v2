@@ -1,16 +1,30 @@
-CREATE SCHEMA IF NOT EXISTS `krampoline` DEFAULT CHARACTER SET utf8mb4;
+-- 데이터베이스 생성 및 설정
+-- CREATE SCHEMA IF NOT EXISTS `testdb` DEFAULT CHARACTER SET utf8mb4;
 
-GRANT ALL ON *.* TO 'root'@'localhost' IDENTIFIED BY 'root' WITH GRANT OPTION;
-GRANT ALL ON krampoline.* TO 'root'@'localhost';
-FLUSH PRIVILEGES;
+-- root 사용자 생성 및 권한 부여
+-- CREATE USER IF NOT EXISTS 'root'@'%' IDENTIFIED BY 'root';
+-- GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' WITH GRANT OPTION;
+-- FLUSH PRIVILEGES;
 
-USE `krampoline`;
+-- 'testdb' 스키마 선택
+-- USE testdb;
 
-DROP TABLE IF EXISTS `sample_data`;
-CREATE TABLE `sample_data` (
-    `id` int(11) NOT NULL AUTO_INCREMENT,
-    `detail` varchar(100) NOT NULL,
-    PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+-- 데이터베이스 생성 및 설정
+CREATE SCHEMA IF NOT EXISTS `testdb`;
 
-INSERT INTO sample_data (`id`,`detail`) VALUES ('1', 'Hello DKOS!');
+-- User 테이블 생성
+
+-- Resume 테이블 생성
+CREATE TABLE IF NOT EXISTS RResume (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    title TEXT
+);
+
+-- Skill 테이블 생성
+CREATE TABLE IF NOT EXISTS SSkill (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    resume_id INT,
+    status BOOLEAN DEFAULT FALSE,
+    content TEXT DEFAULT NULL,
+    FOREIGN KEY (resume_id) REFERENCES RResume(id) ON DELETE CASCADE
+);
